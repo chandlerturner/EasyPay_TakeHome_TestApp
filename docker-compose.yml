@@ -1,0 +1,18 @@
+services:
+  Api:
+    container_name: Api
+    build:
+        context: .
+        dockerfile: Api/Dockerfile
+    ports:
+      - "43695:80"
+
+  WebApp:
+    container_name: WebApp
+    build:
+        context: .
+        dockerfile: WebApp/Dockerfile
+    ports:
+      - "56088:80"
+    extra_hosts:
+      - "localhost:172.17.0.3"
