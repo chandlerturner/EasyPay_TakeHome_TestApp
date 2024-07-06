@@ -1,18 +1,17 @@
+version: '3.4'
+
 services:
   api:
     container_name: api
+    image: ${DOCKER_REGISTRY-}api
     build:
-        context: .
-        dockerfile: Api/Dockerfile
-    ports:
-      - "43695:8080"
+      context: .
+      dockerfile: Api/Dockerfile
 
-  web-app:
-    container_name: web-app
+  webapp:
+    container_name: webapp
+    image: ${DOCKER_REGISTRY-}webapp
     build:
-        context: .
-        dockerfile: WebApp/Dockerfile
-    ports:
-      - "56088:8080"
-    environment:
-      - ApiSettings__Url=http://api:8080
+      context: .
+      dockerfile: WebApp/Dockerfile
+
